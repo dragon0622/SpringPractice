@@ -18,7 +18,9 @@ public class MemberController {
 
     @GetMapping("/members")
     @ResponseBody // RestController 를 붙여준 것과 같은 ㅎ과
-    public List<Member> getAllMembers() {
+    //entity는 setter 사용을 지양하므로 getter setter 역할만 해줄 DTO를 따로 생성하여 사용
+    public List<MemberDTO> getAllMembers() {
         return memberService.getAllMembers();
     }
+
 }
