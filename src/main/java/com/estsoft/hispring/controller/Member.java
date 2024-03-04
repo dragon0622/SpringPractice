@@ -1,7 +1,9 @@
 package com.estsoft.hispring.controller;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity     // db 테이블로서 사용가능하게 만들어줌
 public class Member {
     @Id
