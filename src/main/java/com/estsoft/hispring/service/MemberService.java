@@ -17,6 +17,6 @@ public class MemberService {
 
     public List<Member> getAllMembers() {
 
-        return new ArrayList<>();
+        return memberRepository.findAll();
     }
 }
