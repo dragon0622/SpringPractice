@@ -11,4 +11,12 @@ public class Member {
 
     @Column(name = "name", nullable = false)
     private String name;	// DB 테이블의 name과 컬럼 매칭
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
