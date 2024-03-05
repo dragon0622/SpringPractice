@@ -10,12 +10,12 @@ import java.util.Map;
 
 @Repository
 public class BookRepository {
-    private Map<String, BookDTO> bookDTOMap;
+    private final Map<String, BookDTO> bookDTOMap;
 
     public BookRepository() {
         bookDTOMap = new HashMap<>();
-        BookDTO bookDTO = new BookDTO("123", "가나다", "김정용");
-        bookDTOMap.put(bookDTO.getId(), bookDTO);
+        BookDTO book1 = new BookDTO("123", "가나다", "김정용");
+        bookDTOMap.put(book1.getId(), book1);
     }
 
     public List<BookDTO> getAllBooks() {
