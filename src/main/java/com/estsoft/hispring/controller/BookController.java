@@ -31,10 +31,9 @@ public class BookController {
     @PostMapping("/books")
     public String saveBook(@RequestParam("id")String id, //가져온 값을 id로 저장
                            @RequestParam("name")String name,
-                           @RequestParam("author")String autor){
-        System.out.println(id + name + autor);
+                           @RequestParam("author")String author){
+        bookRepository.addBook(new BookDTO(id, name, author));
         //POST / books?id=xx&name=xx&author=xx
-
         return "redirect:/books";
     }
 

@@ -25,4 +25,8 @@ public class BookRepository {
         }
         return bookDTOList;
     }
+
+    public void addBook(BookDTO book) {
+        bookDTOMap.put(book.getId(),book);
+    }
 }
