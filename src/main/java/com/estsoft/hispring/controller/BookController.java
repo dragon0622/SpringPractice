@@ -4,10 +4,7 @@ import com.estsoft.hispring.repository.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Book;
 import java.util.Arrays;
@@ -27,7 +24,6 @@ public class BookController {
         model.addAttribute("bookList", bookList);
         return "bookManager";
     }
-
     @PostMapping("/books")
     public String saveBook(@RequestParam("id")String id, //가져온 값을 id로 저장
                            @RequestParam("name")String name,
@@ -35,6 +31,15 @@ public class BookController {
         bookRepository.addBook(new BookDTO(id, name, author));
         //POST / books?id=xx&name=xx&author=xx
         return "redirect:/books";
+    }
+    @GetMapping("/books/{id}")
+    public String detail(@PathVariable("id") String isbn, Model model) {
+        System.out.println("isbn = " + isbn);
+
+        //화면에 보여줄 book 객체를 모델에 넣는 코드 작성
+        model.addAttribute("book",bookRepository.getBook(isbn));
+
+        return "bookDetail";
     }
 
 }

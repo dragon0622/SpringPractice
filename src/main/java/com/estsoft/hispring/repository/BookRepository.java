@@ -29,4 +29,8 @@ public class BookRepository {
     public void addBook(BookDTO book) {
         bookDTOMap.put(book.getId(),book);
     }
+
+    public Object getBook(String isbn) {
+        return bookDTOMap.get(isbn);
+    }
 }
