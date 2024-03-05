@@ -1,6 +1,8 @@
 package com.estsoft.hispring.controller;
 
 import com.estsoft.hispring.repository.BookRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Controller
 public class BookController {
+
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final BookRepository bookRepository;
     public BookController(BookRepository bookRepository){
         this.bookRepository = bookRepository;
@@ -34,7 +38,8 @@ public class BookController {
     }
     @GetMapping("/books/{id}")
     public String detail(@PathVariable("id") String isbn, Model model) {
-        System.out.println("isbn = " + isbn);
+
+        log.info("isbn = {}", isbn);
 
         //화면에 보여줄 book 객체를 모델에 넣는 코드 작성
         model.addAttribute("book",bookRepository.getBook(isbn));
